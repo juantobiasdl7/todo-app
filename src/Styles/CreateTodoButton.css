@@ -12,7 +12,8 @@
     font-size: 22px;
     letter-spacing: 5px;
     transition: all 0.5s;
-    position: absolute;
+    position: relative;
+    margin-top: 15px;
     cursor: pointer;
   }
 

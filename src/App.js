@@ -8,7 +8,7 @@ import { CreateTodoButton } from './Components/CreateTodoButton';
 
 const todos = [
   {text: 'Hacer especificaciones de Analytics', completed: false},
-  {text: 'Determinar objetivos en ClickUp', completed: false},
+  {text: 'Determinar objetivos en ClickUp', completed: true},
   {text: 'Hacer sprint de la siguiente semana', completed: false},
   {text: 'Mandar correo a ClickUp para que activen el business plan', completed: false}
 ];
@@ -22,7 +22,11 @@ function App() {
 
       <TodoList>
         {todos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text}/>
+          <TodoItem 
+            key={todo.text} 
+            text={todo.text}
+            completed={todo.completed}
+            />
         ))}
       </TodoList>
 
