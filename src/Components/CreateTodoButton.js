@@ -1,15 +1,15 @@
 import React from 'react';
 import '../Styles/CreateTodoButton.css';
 
-const CreateTodoButton = () => {
-    const onClickButton = (msg) => {
-        alert(msg);
+const CreateTodoButton = ({ setOpenModal }) => {
+    const onClickButton = () => {
+        setOpenModal(true);
     }
 
     return (
 
         <div className="center">
-            <button onClick={() => onClickButton('Aquí se debería abrir el modal')} className="CreateTodoButton">
+            <button onClick={onClickButton} className="CreateTodoButton">
 
             </button>
         </div>

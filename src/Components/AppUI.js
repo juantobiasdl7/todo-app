@@ -1,32 +1,35 @@
 import React from 'react';
+import { TodoContext } from '../TodoContext';
 import { TodoCounter } from './TodoCounter';
 import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
 import { TodoSearch } from './TodoSearch';
 import { CreateTodoButton } from './CreateTodoButton';
+import { Modal } from '../Components/Modal.js';
 
-const AppUI = ({
-    totalTodos,
-    completedTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    markTodo,
-    deleteTodo
-}) => {
+const AppUI = () => {
+    const {
+      error,
+      loading,
+      searchedTodos,
+      markTodo,
+      deleteTodo,
+      openModal,
+      setOpenModal
+    } = React.useContext(TodoContext);
+
+
     return (
         <React.Fragment>
-        <TodoCounter 
-          total={totalTodos}
-          completed={completedTodos}
-        />
+        <TodoCounter />
   
-        <TodoSearch 
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
-  
+        <TodoSearch />
+
         <TodoList>
+          {error && <p>Hubo un error...</p>}
+          {loading && <p>Estamos cargando, no desesperes...</p>}
+          {(!loading && !searchedTodos.length) && <p>¡Crea tu primer Tarea!</p>}      
+          
           {searchedTodos.map(todo => (
             <TodoItem 
               key={todo.text} 
@@ -37,8 +40,14 @@ const AppUI = ({
               />
           ))}
         </TodoList>
-  
-        <CreateTodoButton /> 
+
+        {openModal && (
+          <Modal>
+            <p>gggggggggggggggggggggggg</p>
+          </Modal>
+        )}
+          
+        <CreateTodoButton setOpenModal={setOpenModal}/> 
       </React.Fragment>
     );
 }

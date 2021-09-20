@@ -1,5 +1,5 @@
 .TodoSearch {
-    background: #405e9b;
+    background: white;
     border-radius: 2px;
     border: 2px solid #202329;
     margin: 0 24px;
@@ -13,7 +13,7 @@
 }
 
 .TodoSearch::placeholder {
-    color: white;
+    color: rgb(34, 34, 34);
     font-weight: 900;
 }
 
