@@ -15,6 +15,7 @@
     position: relative;
     margin-top: 15px;
     cursor: pointer;
+    z-index: 1;
   }
 
   .CreateTodoButton:before {

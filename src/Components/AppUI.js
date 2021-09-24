@@ -5,7 +5,11 @@ import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
 import { TodoSearch } from './TodoSearch';
 import { CreateTodoButton } from './CreateTodoButton';
+import { TodoForm } from './TodoForm.js';
 import { Modal } from '../Components/Modal.js';
+import { TodoError } from './TodoError';
+import { TodoLoading } from './TodoLoading';
+import { EmptyTodos } from './EmptyTodos';
 
 const AppUI = () => {
     const {
@@ -26,9 +30,9 @@ const AppUI = () => {
         <TodoSearch />
 
         <TodoList>
-          {error && <p>Hubo un error...</p>}
-          {loading && <p>Estamos cargando, no desesperes...</p>}
-          {(!loading && !searchedTodos.length) && <p>¡Crea tu primer Tarea!</p>}      
+          {error && <TodoError error={error}/>}
+          {loading && <TodoLoading /> }
+          {(!loading && !searchedTodos.length) && <EmptyTodos /> }      
           
           {searchedTodos.map(todo => (
             <TodoItem 
@@ -43,11 +47,11 @@ const AppUI = () => {
 
         {openModal && (
           <Modal>
-            <p>gggggggggggggggggggggggg</p>
+            <TodoForm/>
           </Modal>
         )}
           
-        <CreateTodoButton setOpenModal={setOpenModal}/> 
+        <CreateTodoButton setOpenModal={setOpenModal} openModal={openModal}/> 
       </React.Fragment>
     );
 }
